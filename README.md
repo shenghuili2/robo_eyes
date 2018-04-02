@@ -1,3 +1,3 @@
 # RoboEyes
 A face recognition demo for ROS.
-Please visit [my blog](www.vsaint.club/wordpress) for detail.
+Please visit www.vsaint.club/wordpress for detail.
