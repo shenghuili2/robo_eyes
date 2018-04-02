@@ -4,7 +4,7 @@ import cv2
 
 def facereco(img_path):
 
-    known_image = face_recognition.load_image_file("downey.jpg")
+    known_image = face_recognition.load_image_file("shenghui.jpg")
     unknown_image = face_recognition.load_image_file(img_path)
 
     biden_encoding = face_recognition.face_encodings(known_image)[0]
@@ -13,7 +13,7 @@ def facereco(img_path):
     results = face_recognition.compare_faces([biden_encoding], unknown_encoding)
     message = 'unKnown'
     if results == [True]:
-        message = 'Downey'
+        message = 'Shenghui'
     else:
         known_image = face_recognition.load_image_file("andy.jpg")
         andy_encoding = face_recognition.face_encodings(known_image)[0]
@@ -44,12 +44,12 @@ def facereco(img_path):
     # Display the resulting image
     cv2.imwrite(img_path, unknown_image)
     # cv2.imshow('Video', unknown_image)
-    print(message)
-
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        return message
     return message
 
 if __name__ == '__main__':
     #res = facereco('upload_img.jpg')
-    res = facereco('unlabel.jpg')
+    res = facereco('upload_img.jpg')
     print(res)
 
